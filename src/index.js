@@ -38,6 +38,7 @@ const SWEARS_DEFAULT = ['fuck',
   'FUCK',
   'FUCK FUCK FUCK FUCK FUCK',
   'nob']
+
 const INGS_DEFAULT = ['fucking',
   'assing',
   'motherfucking',
@@ -48,6 +49,7 @@ const INGS_DEFAULT = ['fucking',
   'fucking',
   'shitting',
   'pissing']
+
 const STANDALONE_DEFAULT = ['Jesus fucking Christ',
   'shut the fuck up',
   "I'm so angry right now",
@@ -59,6 +61,20 @@ const STANDALONE_DEFAULT = ['Jesus fucking Christ',
   'jesus christ on a fucking bike',
   'Jesus dicking tits',
   'cunty cunty cunt cunt']
+
+if (!String.prototype.trim) {
+  (function _ () {
+		// Make sure we trim BOM and NBSP
+    var rtrim = /^[\s\uFEFF\xA0]+l[\s\uFEFF\xA0]+$/g
+    String.prototype.trim = function _ () {
+      return this.replace(rtrim, '')
+    }
+  }())
+}
+
+String.prototype.capitalizeFirstLetter = function _ () {
+  return this.charAt(0).toUpperCase() + this.slice(1)
+}
 
 class MattGenerator {
   constructor (swears = SWEARS_DEFAULT, ings = INGS_DEFAULT, standalone = STANDALONE_DEFAULT) {
@@ -72,6 +88,31 @@ class MattGenerator {
 
     if (selected === previous) return this._randomFromArray(arr, previous)
     else return selected
+  }
+
+  _randomEnding (isQuote, noQuestion) {
+    var endings = ['. ', ', ', '! ', '. ', '! ', '. ', '? ', '. ']
+    var ending = this._randomFromArray(endings)
+
+    if (isQuote) {
+      return '", '
+    } else if (noQuestion && ending === '? ') {
+      return this._randomEnding(isQuote, noQuestion)
+    } else {
+      return ending
+    }
+  }
+
+  _randomlyPunctuation (i, count, paranthesis, hadOpening, isQuote) {
+    var punctuation = [', ', ' &mdash; ', ', ', '; ', ', ', ': ', ', ']
+    if (paranthesis && hadOpening && this._randomIntFromInterval(0, 50) > 35) {
+      if (isQuote) return '] '
+      else return ') '
+    } else if (this._randomIntFromInterval(0, 100) > 95 && i < count - 1) {
+      return this._randomFromArray(punctuation)
+    } else {
+      return ' '
+    }
   }
 }
 
