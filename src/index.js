@@ -46,7 +46,9 @@ const SWEARS_DEFAULT = [
   'nyehh',
   'nyehh',
   'nyehh',
-  'cunthole']
+  'cunthole',
+  'bread',
+  'bread fetish']
 
 const INGS_DEFAULT = [
   'fucking',
@@ -70,7 +72,8 @@ const STANDALONE_DEFAULT = [
   'I fucked up',
   'jesus christ on a fucking bike',
   'Jesus dicking tits',
-  'cunty cunty cunt cunt']
+  'cunty cunty cunt cunt',
+  'sexy sexy bread']
 
 const DEFAULT_OPTIONS = {
   merge: false,
