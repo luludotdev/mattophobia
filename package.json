@@ -1,6 +1,6 @@
 {
   "name": "matt-generator",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Inside the Mind of Mattophobia as JS Bindings",
   "main": "index.js",
   "scripts": {
