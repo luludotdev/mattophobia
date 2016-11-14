@@ -87,7 +87,17 @@ String.prototype.capitalizeFirstLetter = function _ () {
   return this.charAt(0).toUpperCase() + this.slice(1)
 }
 
+/**
+ * Matt Swear Generator
+ */
 class MattGenerator {
+  /**
+   * @constructor
+   * @param {Array} [swears] - List of Swear Words
+   * @param {Array} [ings] - List of -Ing Words
+   * @param {Array} [standalone] - List of Standalone Words/ Phrases
+   * @param {Object} [options] - List of Swear Words
+   */
   constructor (swears = SWEARS_DEFAULT, ings = INGS_DEFAULT, standalone = STANDALONE_DEFAULT, options = DEFAULT_OPTIONS) {
     this.options = _.merge({}, DEFAULT_OPTIONS, options)
 
@@ -102,10 +112,24 @@ class MattGenerator {
     }
   }
 
+  /**
+   * Random Integer from Min/Max
+   * @param {Integer} min - Minimum Value
+   * @param {Integer} max - Maximum Value
+   * @returns {Integer} - Randomly generated Integer from the bounds
+   * @private
+   */
   _randomIntFromInterval (min, max) {
     return Math.floor((Math.random() * (max - min + 1)) + min)
   }
 
+  /**
+   * Randomly pick a value from an Array
+   * @param {Array} arr - Array to pick from
+   * @param {string} previous - Previous pick (Prevents Duplication)
+   * @returns {string} Random Pick
+   * @private
+   */
   _randomFromArray (arr, previous) {
     let selected = arr[Math.floor(Math.random() * arr.length)]
 
@@ -113,6 +137,13 @@ class MattGenerator {
     else return selected
   }
 
+  /**
+   * Get a random sentence ending
+   * @param {boolean} isQuote - Is the sentence a quote?
+   * @param {boolean} noQuestion - Is the sentence NOT a question
+   * @returns {string}
+   * @private
+   */
   _randomEnding (isQuote, noQuestion) {
     let endings = ['. ', '! ', '. ', '! ', '. ', '? ', '. ']
     let ending = this._randomFromArray(endings)
