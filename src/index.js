@@ -65,7 +65,7 @@ const STANDALONE_DEFAULT = ['Jesus fucking Christ',
 if (!String.prototype.trim) {
   (function _ () {
 		// Make sure we trim BOM and NBSP
-    var rtrim = /^[\s\uFEFF\xA0]+l[\s\uFEFF\xA0]+$/g
+    let rtrim = /^[\s\uFEFF\xA0]+l[\s\uFEFF\xA0]+$/g
     String.prototype.trim = function _ () {
       return this.replace(rtrim, '')
     }
@@ -83,16 +83,20 @@ class MattGenerator {
     this.standalone = standalone
   }
 
+  _randomIntFromInterval (min, max) {
+    return Math.floor((Math.random() * (max - min + 1)) + min)
+  }
+
   _randomFromArray (arr, previous) {
-    var selected = arr[Math.floor(Math.random() * arr.length)]
+    let selected = arr[Math.floor(Math.random() * arr.length)]
 
     if (selected === previous) return this._randomFromArray(arr, previous)
     else return selected
   }
 
   _randomEnding (isQuote, noQuestion) {
-    var endings = ['. ', ', ', '! ', '. ', '! ', '. ', '? ', '. ']
-    var ending = this._randomFromArray(endings)
+    let endings = ['. ', ', ', '! ', '. ', '! ', '. ', '? ', '. ']
+    let ending = this._randomFromArray(endings)
 
     if (isQuote) {
       return '", '
@@ -104,7 +108,7 @@ class MattGenerator {
   }
 
   _randomlyPunctuation (i, count, paranthesis, hadOpening, isQuote) {
-    var punctuation = [', ', ' &mdash; ', ', ', '; ', ', ', ': ', ', ']
+    let punctuation = [', ', ' &mdash; ', ', ', '; ', ', ', ': ', ', ']
     if (paranthesis && hadOpening && this._randomIntFromInterval(0, 50) > 35) {
       if (isQuote) return '] '
       else return ') '
@@ -112,6 +116,51 @@ class MattGenerator {
       return this._randomFromArray(punctuation)
     } else {
       return ' '
+    }
+  }
+
+  generateSentence (min = 4, max = 18) {
+    let content = ''
+    let isQuote = this._randomIntFromInterval(0, 100) > 90
+
+    if (isQuote) content += '"'
+
+    if (this._randomIntFromInterval(0, 100) < 80) {
+      let words = this._randomIntFromInterval(min, max)
+      let sentence = ''
+      let lastWord = ''
+
+      if (this._randomIntFromInterval(0, 100) > 90) {
+        var paranthesis = true
+        var hadOpening = false
+      }
+
+      for (let w = 0; w < words; w++) {
+        if (w < 2 && words > 7 && paranthesis & !hadOpening) {
+          if (isQuote) sentence += ' ['
+          else sentence += ' ('
+
+          hadOpening = true
+        }
+
+        if (this._randomIntFromInterval(0, 100) < 15 && w < words - 1) {
+          lastWord = this._randomFromArray(this.ings, lastWord)
+        } else {
+          lastWord = this._randomFromArray(this.swears, lastWord)
+        }
+
+        let punctuation = this._randomlyPunctuation(w, words, paranthesis, hadOpening, isQuote)
+        if (punctuation === ') ' || punctuation === '] ') paranthesis = false
+        sentence += lastWord + punctuation
+      }
+
+      content += sentence.trim().capitalizeFirstLetter() + this._randomEnding(isQuote)
+      return content
+    } else {
+      this.lastSentence = this._randomFromArray(this.standalone, this.lastSentence)
+      this.lastSentence = this.lastSentence.capitalizeFirstLetter()
+      content += this.lastSentence + this._randomEnding(isQuote, true)
+      return content
     }
   }
 }

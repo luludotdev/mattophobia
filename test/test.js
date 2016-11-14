@@ -6,3 +6,9 @@
 
   Test Module
 */
+
+const path = require('path')
+const MATT = require(path.join(__dirname, '..', 'src'))
+const matt = new MATT()
+
+console.log(matt.generateSentence())
