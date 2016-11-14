@@ -38,3 +38,6 @@ jspm_packages
 
 # Docs
 docs
+
+# Bot Config
+bot_config.js

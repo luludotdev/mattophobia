@@ -25,5 +25,7 @@
     "jsdoc": "^3.4.3",
     "minami": "^1.1.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "twit": "^2.2.5"
+  }
 }

@@ -37,7 +37,12 @@ const SWEARS_DEFAULT = ['fuck',
   'fuck',
   'FUCK',
   'FUCK FUCK FUCK FUCK FUCK',
-  'nob']
+  'trump',
+  'nyehh',
+  'nyehh',
+  'nyehh',
+  'nyehh',
+  'cunthole']
 
 const INGS_DEFAULT = ['fucking',
   'assing',
@@ -45,7 +50,6 @@ const INGS_DEFAULT = ['fucking',
   'goddamn',
   'damn',
   'holy',
-  'wanking',
   'fucking',
   'shitting',
   'pissing']
