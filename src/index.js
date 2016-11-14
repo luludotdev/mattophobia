@@ -104,7 +104,7 @@ STANDALONE_DEFAULT, options = DEFAULT_OPTIONS) {
   }
 
   _randomEnding (isQuote, noQuestion) {
-    let endings = ['. ', ', ', '! ', '. ', '! ', '. ', '? ', '. ']
+    let endings = ['. ', '! ', '. ', '! ', '. ', '? ', '. ']
     let ending = this._randomFromArray(endings)
 
     if (isQuote) {
