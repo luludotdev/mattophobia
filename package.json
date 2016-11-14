@@ -1,6 +1,6 @@
 {
-  "name": "matt-generator",
-  "version": "2.0.1",
+  "name": "mattophobia-says",
+  "version": "0.2.0",
   "description": "Inside the Mind of Mattophobia as JS Bindings",
   "main": "index.js",
   "scripts": {
@@ -26,7 +26,6 @@
     "minami": "^1.1.1"
   },
   "dependencies": {
-    "lodash": "^4.17.0",
-    "twit": "^2.2.5"
+    "lodash": "^4.17.0"
   }
 }

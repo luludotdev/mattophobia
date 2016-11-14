@@ -1,5 +1,5 @@
 /*
-  Matt Generator
+  Mattophobia Says
   By Jack Baron
   Copyright (c) Jack Baron 2016
   Licensed under ISC License
@@ -91,9 +91,9 @@ String.prototype.capitalizeFirstLetter = function _ () {
 }
 
 /**
- * Matt Swear Generator
+ * Mattophobia Says
  */
-class MattGenerator {
+class MattSays {
   /**
    * @constructor
    * @param {Array} [swears] - List of Swear Words
@@ -234,4 +234,4 @@ class MattGenerator {
   }
 }
 
-module.exports = MattGenerator
+module.exports = MattSays

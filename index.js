@@ -1,5 +1,5 @@
 /*
-  Matt Generator
+  Mattophobia Says
   By Jack Baron
   Copyright (c) Jack Baron 2016
   Licensed under ISC License
