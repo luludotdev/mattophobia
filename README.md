@@ -11,7 +11,7 @@ Mattophobia Says
 
 * MattSays
     * new MattSays([swears], [ings], [standalone], [options])
-    * .generateSentence([min], [max]) ⇒ `string`
+    * .generateSentence([min], [max]) --> `string`
 
 ### new MattSays([swears], [ings], [standalone], [options])
 
@@ -22,7 +22,7 @@ Mattophobia Says
 | [standalone] | `Array` | List of Standalone Words/ Phrases |
 | [options] | `Object` | List of Swear Words |
 
-### mattSays.generateSentence([min], [max]) ⇒ `string`
+### mattSays.generateSentence([min], [max]) --> `string`
 Generate a random Mattophobia Style Sentence
 
 **Kind**: instance method of `MattSays`  
