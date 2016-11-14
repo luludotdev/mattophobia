@@ -104,6 +104,7 @@ module.exports = {
     "quote-props": ["error", "as-needed"],
     "quotes": ["error", "single", { "avoidEscape": true, "allowTemplateLiterals": true }],
     "semi-spacing": "error",
+    "semi": ["error", "never"],
     "space-before-blocks": "error",
     "space-before-function-paren": ["error", "always"],
     "space-in-parens": "error",
