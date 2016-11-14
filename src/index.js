@@ -10,7 +10,8 @@
 // Dependencies
 const _ = require('lodash')
 
-const SWEARS_DEFAULT = ['fuck',
+const SWEARS_DEFAULT = [
+  'fuck',
   'shit',
   'cunt',
   'piss',
@@ -47,7 +48,8 @@ const SWEARS_DEFAULT = ['fuck',
   'nyehh',
   'cunthole']
 
-const INGS_DEFAULT = ['fucking',
+const INGS_DEFAULT = [
+  'fucking',
   'assing',
   'motherfucking',
   'goddamn',
@@ -57,7 +59,8 @@ const INGS_DEFAULT = ['fucking',
   'shitting',
   'pissing']
 
-const STANDALONE_DEFAULT = ['Jesus fucking Christ',
+const STANDALONE_DEFAULT = [
+  'Jesus fucking Christ',
   'shut the fuck up',
   "I'm so angry right now",
   'fuck you',
@@ -157,6 +160,16 @@ class MattGenerator {
     }
   }
 
+  /**
+   * Randomly select punctuation for mid-sentence
+   * @param {Integer} i - I don't know
+   * @param {Integer} count - Count of something
+   * @param {boolean} paranthesis - Paranthesis yay or nay
+   * @param {boolean} hadOpening - Has it had an opening recently?
+   * @param {boolean} isQuote - Is the sentence a quote?
+   * @returns {string}
+   * @private
+   */
   _randomlyPunctuation (i, count, paranthesis, hadOpening, isQuote) {
     let punctuation = [', ', ' - ', ', ', '; ', ', ', ': ', ', ']
     if (paranthesis && hadOpening && this._randomIntFromInterval(0, 50) > 35) {
@@ -169,6 +182,12 @@ class MattGenerator {
     }
   }
 
+  /**
+   * Generate a random Mattophobia Style Sentence
+   * @param {Integer} [min] - Minimum number of words
+   * @param {Integer} [max] - Maximum number of words
+   * @returns {string}
+   */
   generateSentence (min = 4, max = 18) {
     let content = ''
     let isQuote = this._randomIntFromInterval(0, 100) > 90
