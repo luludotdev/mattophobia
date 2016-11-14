@@ -1,0 +1,28 @@
+{
+  "name": "matt-generator",
+  "version": "0.1.0",
+  "description": "Inside the Mind of Mattophobia as JS Bindings",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run lint && npm run tests",
+    "tests": "node ./test/test.js",
+    "lint": "eslint ./",
+    "docs": "jsdoc --configure .jsdoc.json --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.jackbaron.com/lolPants/matt-generator.git"
+  },
+  "keywords": [
+    "matt",
+    "mattophobia",
+    "generator"
+  ],
+  "author": "Jack Baron <me@jackbaron.com> (https://jackbaron.com)",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^3.10.0",
+    "jsdoc": "^3.4.3",
+    "minami": "^1.1.1"
+  }
+}

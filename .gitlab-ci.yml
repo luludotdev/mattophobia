@@ -1,0 +1,10 @@
+before_script:
+  - yarn
+  
+stages:
+  - test
+
+job_runtests:
+  stage: test
+  script:
+    - yarn run test
