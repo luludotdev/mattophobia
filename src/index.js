@@ -66,6 +66,10 @@ const STANDALONE_DEFAULT = ['Jesus fucking Christ',
   'Jesus dicking tits',
   'cunty cunty cunt cunt']
 
+const DEFAULT_OPTIONS = {
+  merge: false,
+}
+
 if (!String.prototype.trim) {
   (function _ () {
 		// Make sure we trim BOM and NBSP
@@ -81,7 +85,8 @@ String.prototype.capitalizeFirstLetter = function _ () {
 }
 
 class MattGenerator {
-  constructor (swears = SWEARS_DEFAULT, ings = INGS_DEFAULT, standalone = STANDALONE_DEFAULT) {
+  constructor (swears = SWEARS_DEFAULT, ings = INGS_DEFAULT, standalone = 
+STANDALONE_DEFAULT, options = DEFAULT_OPTIONS) {
     this.swears = swears
     this.ings = ings
     this.standalone = standalone
