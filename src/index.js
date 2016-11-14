@@ -7,6 +7,9 @@
   Main Module
 */
 
+// Dependencies
+const _ = require('lodash')
+
 const SWEARS_DEFAULT = ['fuck',
   'shit',
   'cunt',
@@ -85,11 +88,18 @@ String.prototype.capitalizeFirstLetter = function _ () {
 }
 
 class MattGenerator {
-  constructor (swears = SWEARS_DEFAULT, ings = INGS_DEFAULT, standalone = 
-STANDALONE_DEFAULT, options = DEFAULT_OPTIONS) {
-    this.swears = swears
-    this.ings = ings
-    this.standalone = standalone
+  constructor (swears = SWEARS_DEFAULT, ings = INGS_DEFAULT, standalone = STANDALONE_DEFAULT, options = DEFAULT_OPTIONS) {
+    this.options = _.merge({}, DEFAULT_OPTIONS, options)
+
+    if (this.options.merge) {
+      this.swears = _.concat(SWEARS_DEFAULT, swears)
+      this.ings = _.concat(INGS_DEFAULT, ings)
+      this.standalone = _.concat(STANDALONE_DEFAULT, standalone)
+    } else {
+      this.swears = swears
+      this.ings = ings
+      this.standalone = standalone
+    }
   }
 
   _randomIntFromInterval (min, max) {
@@ -117,7 +127,7 @@ STANDALONE_DEFAULT, options = DEFAULT_OPTIONS) {
   }
 
   _randomlyPunctuation (i, count, paranthesis, hadOpening, isQuote) {
-    let punctuation = [', ', ' &mdash; ', ', ', '; ', ', ', ': ', ', ']
+    let punctuation = [', ', ' - ', ', ', '; ', ', ', ': ', ', ']
     if (paranthesis && hadOpening && this._randomIntFromInterval(0, 50) > 35) {
       if (isQuote) return '] '
       else return ') '
