@@ -1,5 +1,5 @@
 {
-  "name": "mattophobia-says",
+  "name": "@lolpants/mattophobia-says",
   "version": "0.2.3",
   "description": "Inside the Mind of Mattophobia as JS Bindings",
   "main": "index.js",
