@@ -155,7 +155,7 @@ class MattSays {
     let ending = this._randomFromArray(endings)
 
     if (isQuote) {
-      return '", '
+      return '." '
     } else if (noQuestion && ending === '? ') {
       return this._randomEnding(isQuote, noQuestion)
     } else {

@@ -11,4 +11,10 @@ const path = require('path')
 const MattSays = require(path.join(__dirname, '..', 'src'))
 const matt = new MattSays()
 
-console.log(matt.generateSentence())
+const _shortSentence = () => {
+  for (var i = 0; i < 10; i++) {
+    console.log(matt.generateSentence(4, 9))
+  }
+}
+
+_shortSentence()
