@@ -34,21 +34,20 @@ const SWEARS_DEFAULT = [
   'fucker',
   'prick',
   'jesus',
-  'AIDS',
   'bastard',
   'god damn it',
   'shitfuck',
   'fuck',
   'FUCK',
-  'FUCK FUCK FUCK FUCK FUCK',
+  'FUCK FUCK FUCK',
   'Trump',
-  'nyehh',
   'nyehh',
   'nyehh',
   'nyehh',
   'cunthole',
   'bread',
-  'bread fetish']
+  'bread fetish',
+  '*quack*']
 
 const INGS_DEFAULT = [
   'fucking',
@@ -67,7 +66,6 @@ const STANDALONE_DEFAULT = [
   "I'm so angry right now",
   'fuck you',
   'shut up',
-  'Jesus wept',
   'FUCK YOU',
   'I fucked up',
   'jesus christ on a fucking bike',
