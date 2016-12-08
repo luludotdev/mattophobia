@@ -1,7 +1,7 @@
 {
   "name": "@lolpants/mattophobia-says",
   "version": "0.2.7",
-  "description": "Inside the Mind of Mattophobia as JS Bindings",
+  "description": "Inside the Mind of Mattophobia as JS Bindings.",
   "main": "src/",
   "scripts": {
     "test": "gulp",
