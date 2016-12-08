@@ -9,13 +9,22 @@
 
 const path = require('path')
 const assert = require('assert')
+
 const MattSays = require(path.join(__dirname, '..', 'src'))
 const matt = new MattSays()
 
-const _shortSentence = () => {
-  for (var i = 0; i < 10; i++) {
-    console.log(matt.generateSentence(4, 9))
-  }
-}
-
-_shortSentence()
+describe('Matt Generator', () => {
+  describe('Installation', () =>  {
+    it('should be a function', () =>  {
+      assert.equal(typeof MattSays, 'function')
+    })
+  })
+  describe('Usage', () =>  {
+    it('should return a string', () =>  {
+      assert.equal(typeof matt.generateSentence(2, 8), 'string')
+    })
+    it('should be at least minimum length', () =>  {
+      assert(matt.generateSentence(2, 5).length >= 2)
+    })
+  })
+})

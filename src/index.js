@@ -225,12 +225,12 @@ class MattSays {
       }
 
       content += sentence.trim().capitalizeFirstLetter() + this._randomEnding(isQuote)
-      return content
+      return content.slice(0, -1)
     } else {
       this.lastSentence = this._randomFromArray(this.standalone, this.lastSentence)
       this.lastSentence = this.lastSentence.capitalizeFirstLetter()
       content += this.lastSentence + this._randomEnding(isQuote, true)
-      return content
+      return content.slice(0, -1)
     }
   }
 }
