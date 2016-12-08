@@ -8,6 +8,7 @@
 */
 
 const path = require('path')
+const assert = require('assert')
 const MattSays = require(path.join(__dirname, '..', 'src'))
 const matt = new MattSays()
 
