@@ -1,93 +1,17 @@
-/*
-  Mattophobia Says
-  By Jack Baron
-  Copyright (c) Jack Baron 2016
-  Licensed under ISC License
-
-  Main Module
-*/
-
-// Dependencies
-const _ = require('lodash')
-
-const SWEARS_DEFAULT = [
-  'fuck',
-  'shit',
-  'cunt',
-  'piss',
-  'twat',
-  'hell',
-  'ass',
-  'asshole',
-  'motherfucker',
-  'son of a bitch',
-  'piece of shit',
-  'wanker',
-  'dickhead',
-  'bitch',
-  'cock',
-  'assface',
-  'wankface',
-  'asshat',
-  'penis',
-  'shitface',
-  'fucker',
-  'prick',
-  'jesus',
-  'bastard',
-  'god damn it',
-  'shitfuck',
-  'fuck',
-  'FUCK',
-  'FUCK FUCK FUCK',
-  'Trump',
-  'nyehh',
-  'nyehh',
-  'nyehh',
-  'cunthole',
-  'bread',
-  'bread fetish',
-  '*quack*']
-
-const INGS_DEFAULT = [
-  'fucking',
-  'assing',
-  'motherfucking',
-  'goddamn',
-  'damn',
-  'holy',
-  'fucking',
-  'shitting',
-  'pissing']
-
-const STANDALONE_DEFAULT = [
-  'Jesus fucking Christ',
-  'shut the fuck up',
-  "I'm so angry right now",
-  'fuck you',
-  'shut up',
-  'FUCK YOU',
-  'I fucked up',
-  'jesus christ on a fucking bike',
-  'Jesus dicking tits',
-  'cunty cunty cunt cunt',
-  'sexy sexy bread']
-
-const DEFAULT_OPTIONS = {
-  merge: false,
-}
+// Local Dependencies
+const { SWEARS, INGS, STANDALONE } = require('./constants')
 
 if (!String.prototype.trim) {
   (function _ () {
-		// Make sure we trim BOM and NBSP
+    // Make sure we trim BOM and NBSP
     let rtrim = /^[\s\uFEFF\xA0]+l[\s\uFEFF\xA0]+$/g
-    String.prototype.trim = function _ () {
+    String.prototype.trim = function trim () {
       return this.replace(rtrim, '')
     }
   }())
 }
 
-String.prototype.capitalizeFirstLetter = function _ () {
+String.prototype.capitalizeFirstLetter = function capitalizeFirstLetter () {
   return this.charAt(0).toUpperCase() + this.slice(1)
 }
 
@@ -97,18 +21,16 @@ String.prototype.capitalizeFirstLetter = function _ () {
 class MattSays {
   /**
    * @constructor
-   * @param {Array} [swears] - List of Swear Words
-   * @param {Array} [ings] - List of -Ing Words
-   * @param {Array} [standalone] - List of Standalone Words/ Phrases
-   * @param {Object} [options] - List of Swear Words
+   * @param {string[]} [swears] List of Swear Words
+   * @param {string[]} [ings] List of -Ing Words
+   * @param {string[]} [standalone] List of Standalone Words/ Phrases
+   * @param {boolean} [merge] Merge with default arrays or just overwrite
    */
-  constructor (swears = SWEARS_DEFAULT, ings = INGS_DEFAULT, standalone = STANDALONE_DEFAULT, options = DEFAULT_OPTIONS) {
-    this.options = _.merge({}, DEFAULT_OPTIONS, options)
-
-    if (this.options.merge) {
-      this.swears = _.concat(SWEARS_DEFAULT, swears)
-      this.ings = _.concat(INGS_DEFAULT, ings)
-      this.standalone = _.concat(STANDALONE_DEFAULT, standalone)
+  constructor (swears = SWEARS, ings = INGS, standalone = STANDALONE, merge = false) {
+    if (merge) {
+      this.swears = [...SWEARS, ...swears]
+      this.ings = [...INGS, ...ings]
+      this.standalone = [...STANDALONE, ...standalone]
     } else {
       this.swears = swears
       this.ings = ings
@@ -117,10 +39,10 @@ class MattSays {
   }
 
   /**
-   * Random Integer from Min/Max
-   * @param {Integer} min - Minimum Value
-   * @param {Integer} max - Maximum Value
-   * @returns {Integer} - Randomly generated Integer from the bounds
+   * Random number from Min/Max
+   * @param {number} min Minimum Value
+   * @param {number} max Maximum Value
+   * @returns {number} Randomly generated number from the bounds
    * @private
    */
   _randomIntFromInterval (min, max) {
@@ -129,8 +51,8 @@ class MattSays {
 
   /**
    * Randomly pick a value from an Array
-   * @param {Array} arr - Array to pick from
-   * @param {string} previous - Previous pick (Prevents Duplication)
+   * @param {Array} arr Array to pick from
+   * @param {string} previous Previous pick (Prevents Duplication)
    * @returns {string} Random Pick
    * @private
    */
@@ -143,8 +65,8 @@ class MattSays {
 
   /**
    * Get a random sentence ending
-   * @param {boolean} isQuote - Is the sentence a quote?
-   * @param {boolean} noQuestion - Is the sentence NOT a question
+   * @param {boolean} isQuote Is the sentence a quote?
+   * @param {boolean} noQuestion Is the sentence NOT a question
    * @returns {string}
    * @private
    */
@@ -163,11 +85,11 @@ class MattSays {
 
   /**
    * Randomly select punctuation for mid-sentence
-   * @param {Integer} i - I don't know
-   * @param {Integer} count - Count of something
-   * @param {boolean} paranthesis - Paranthesis yay or nay
-   * @param {boolean} hadOpening - Has it had an opening recently?
-   * @param {boolean} isQuote - Is the sentence a quote?
+   * @param {number} i I don't know
+   * @param {number} count Count of something
+   * @param {boolean} paranthesis Paranthesis yay or nay
+   * @param {boolean} hadOpening Has it had an opening recently?
+   * @param {boolean} isQuote Is the sentence a quote?
    * @returns {string}
    * @private
    */
@@ -185,11 +107,11 @@ class MattSays {
 
   /**
    * Generate a random Mattophobia Style Sentence
-   * @param {Integer} [min] - Minimum number of words
-   * @param {Integer} [max] - Maximum number of words
+   * @param {number} [min=4] Minimum number of words
+   * @param {number} [max=18] Maximum number of words
    * @returns {string}
    */
-  generateSentence (min = 4, max = 18) {
+  generate (min = 4, max = 18) {
     let content = ''
     let isQuote = this._randomIntFromInterval(0, 100) > 90
 

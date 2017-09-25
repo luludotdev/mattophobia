@@ -1,35 +1,27 @@
 {
-  "name": "@lolpants/mattophobia-says",
-  "version": "0.2.7",
+  "name": "mattophobia-says",
+  "version": "0.3.0",
   "description": "Inside the Mind of Mattophobia as JS Bindings.",
-  "main": "src/",
+  "main": "src/index.js",
   "scripts": {
-    "test": "gulp",
-    "tests": "gulp mocha",
-    "lint": "gulp lint",
-    "docs": "gulp docs"
+    "test": "eslint --color src/"
   },
   "repository": {
     "type": "git",
-    "url": "https://git.jackbaron.com/lolPants/matt-generator.git"
+    "url": "git+ssh://git@gitlab.com/lolPants/mattophobia-says.git"
   },
   "keywords": [
     "matt",
     "mattophobia",
     "generator"
   ],
-  "author": "Jack Baron <me@jackbaron.com> (https://jackbaron.com)",
+  "author": "Jack Baron <me@jackbaron.com> (https://www.jackbaron.com)",
   "license": "ISC",
-  "devDependencies": {
-    "eslint": "^3.11.1",
-    "gulp": "gulpjs/gulp#4.0",
-    "gulp-eslint": "^3.0.1",
-    "gulp-exec": "^2.1.3",
-    "gulp-mocha": "^3.0.1",
-    "jsdoc": "^3.4.3",
-    "minami": "^1.1.1"
+  "bugs": {
+    "url": "https://gitlab.com/lolPants/mattophobia-says/issues"
   },
-  "dependencies": {
-    "lodash": "^4.17.2"
+  "homepage": "https://gitlab.com/lolPants/mattophobia-says#README",
+  "devDependencies": {
+    "eslint": "^4.7.2"
   }
 }
