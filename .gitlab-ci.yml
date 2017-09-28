@@ -1,10 +1,12 @@
+image: node:latest
+
 before_script:
   - yarn
   
 stages:
   - test
 
-job_runtests:
+run_tests:
   stage: test
   script:
-    - yarn run test
+    - npm run test
