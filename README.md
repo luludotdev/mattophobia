@@ -1,6 +1,9 @@
 # Mattophobia Says [![Build Status](https://travis-ci.org/lolPants/mattophobia-says.svg?branch=master)](https://travis-ci.org/lolPants/mattophobia-says)
 _Inside the Mind of Mattophobia as JS Bindings._
 
+## Python Fork
+There is a python fork of this project available [here](https://github.com/DerpyChap/mattophobia_says).
+
 ## Documentation
 
 * MattSays
