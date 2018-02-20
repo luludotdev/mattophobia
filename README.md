@@ -1,13 +1,7 @@
 # Mattophobia Says
-
-## About
-Inside the Mind of Mattophobia as JS Bindings  
-By Jack Baron  
-Copyright (c) Jack Baron 2017  
-Licensed under ISC License
+_Inside the Mind of Mattophobia as JS Bindings._
 
 ## Documentation
-Mattophobia Says
 
 * MattSays
     * new MattSays([swears], [ings], [standalone], [merge])
