@@ -112,3 +112,5 @@ export function* mattophobia(opts: Partial<IOptions> = defaultOptions) {
     else yield sentence
   }
 }
+
+export default mattophobia
