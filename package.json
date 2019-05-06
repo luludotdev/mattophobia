@@ -1,28 +1,59 @@
 {
-  "name": "mattophobia-says",
-  "version": "0.3.0",
-  "description": "Inside the mind of Mattophobia as a JS API",
-  "main": "src/index.js",
-  "scripts": {
-    "test": "eslint --color src/"
+  "name": "mattophobia",
+  "version": "1.0.0",
+  "description": "Generate Mattophobia-like sentences",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "directories": {
+    "lib": "lib"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lolPants/mattophobia-says.git"
-  },
-  "keywords": [
-    "matt",
-    "mattophobia",
-    "says",
-    "generator"
+  "files": [
+    "lib/**/*"
   ],
-  "author": "Jack Baron <me@jackbaron.com> (https://www.jackbaron.com)",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/lolPants/mattophobia-says/issues"
+  "scripts": {
+    "prepublishOnly": "yarn run test && yarn run build",
+    "test": "yarn run check && yarn run lint && yarn run ava",
+    "ava": "nyc --reporter=html --reporter=text ava",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "check": "yarn run build --noEmit",
+    "lint": "tslint -c tslint.json 'src/**/*.ts'",
+    "prebuild": "rimraf lib",
+    "build": "tsc --sourceMap",
+    "watch": "tsc --watch",
+    "dev": "yarn run watch  --sourceMap"
   },
-  "homepage": "https://github.com/lolPants/mattophobia-says#readme",
+  "repository": "git@github.com:lolPants/mattophobia.git",
+  "author": "Jack Baron <jackmbaron@gmail.com> (https://www.jackbaron.com)",
+  "license": "ISC",
   "devDependencies": {
-    "eslint": "^4.18.0"
+    "@types/node": "^12.0.0",
+    "ava": "^1.4.1",
+    "coveralls": "^3.0.3",
+    "nyc": "^14.1.0",
+    "prettier": "^1.17.0",
+    "rimraf": "^2.6.3",
+    "ts-node": "^8.1.0",
+    "tslint": "^5.16.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "typescript": "^3.4.5"
+  },
+  "ava": {
+    "compileEnhancements": false,
+    "files": [
+      "test/**/*.ts",
+      "!test/helpers.ts"
+    ],
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ]
+  },
+  "nyc": {
+    "extension": [
+      ".ts"
+    ]
   }
 }

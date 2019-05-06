@@ -1,6 +1,4 @@
-// Default Word List
-
-const SWEARS = [
+export const SWEARS = [
   'fuck',
   'shit',
   'cunt',
@@ -40,7 +38,7 @@ const SWEARS = [
   '*quack*',
 ]
 
-const INGS = [
+export const INGS = [
   'fucking',
   'assing',
   'motherfucking',
@@ -52,7 +50,7 @@ const INGS = [
   'pissing',
 ]
 
-const STANDALONE = [
+export const STANDALONE = [
   'Jesus fucking Christ',
   'shut the fuck up',
   "I'm so angry right now",
@@ -65,9 +63,3 @@ const STANDALONE = [
   'cunty cunty cunt cunt',
   'sexy sexy bread',
 ]
-
-module.exports = {
-  SWEARS,
-  INGS,
-  STANDALONE,
-}
