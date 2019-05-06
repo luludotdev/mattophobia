@@ -1,28 +1,9 @@
 {
-  "name": "mattophobia-says",
-  "version": "0.3.0",
-  "description": "Inside the mind of Mattophobia as a JS API",
-  "main": "src/index.js",
-  "scripts": {
-    "test": "eslint --color src/"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lolPants/mattophobia-says.git"
-  },
-  "keywords": [
-    "matt",
-    "mattophobia",
-    "says",
-    "generator"
-  ],
-  "author": "Jack Baron <me@jackbaron.com> (https://www.jackbaron.com)",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/lolPants/mattophobia-says/issues"
-  },
-  "homepage": "https://github.com/lolPants/mattophobia-says#readme",
-  "devDependencies": {
-    "eslint": "^4.18.0"
-  }
+  "name": "mattophobia",
+  "version": "1.0.0",
+  "description": "Generate Mattophobia-like sentences",
+  "main": "lib/index.js",
+  "repository": "git@github.com:lolPants/mattophobia.git",
+  "author": "Jack Baron <jackmbaron@gmail.com> (https://www.jackbaron.com)",
+  "license": "ISC"
 }
