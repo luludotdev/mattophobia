@@ -108,7 +108,7 @@ export function* mattophobia(opts: Partial<IOptions> = defaultOptions) {
 
   while (true) {
     const sentence = generate(options.minWords, options.maxWords)
-    if (sentence.length > options.maxLength) continue
+    if (options.maxLength > 1 && sentence.length > options.maxLength) continue
     else yield sentence
   }
 }
