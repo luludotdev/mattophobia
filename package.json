@@ -18,8 +18,9 @@
     "check": "yarn run build --noEmit",
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
     "prebuild": "rimraf lib",
-    "build": "tsc --sourceMap",
-    "watch": "tsc --watch",
+    "build": "ncc build ./src/index.ts -o lib -m",
+    "compile": "tsc",
+    "watch": "yarn run compile --watch",
     "dev": "yarn run watch  --sourceMap"
   },
   "repository": "git@github.com:lolPants/mattophobia.git",
@@ -27,6 +28,7 @@
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^12.12.7",
+    "@zeit/ncc": "^0.20.5",
     "ava": "^2.4.0",
     "coveralls": "^3.0.7",
     "nyc": "^14.1.1",

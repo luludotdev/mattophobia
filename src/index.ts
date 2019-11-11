@@ -42,7 +42,7 @@ interface IOptions {
   maxWords: number
 }
 
-export const defaultOptions: IOptions = {
+const defaultOptions: IOptions = {
   ings: INGS,
   standalone: STANDALONE,
   swears: SWEARS,
@@ -52,7 +52,7 @@ export const defaultOptions: IOptions = {
   minWords: 4,
 }
 
-export function* mattophobia(opts: Partial<IOptions> = defaultOptions) {
+function* mattophobia(opts: Partial<IOptions> = defaultOptions) {
   const options: IOptions = { ...defaultOptions, ...opts }
 
   let lastSentence = ''
@@ -113,4 +113,4 @@ export function* mattophobia(opts: Partial<IOptions> = defaultOptions) {
   }
 }
 
-export default mattophobia
+export = mattophobia
