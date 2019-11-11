@@ -22,7 +22,10 @@ test('respects maxLength', t => {
   const generator = mattophobia({ maxLength })
 
   for (let i = 0; i < 100; i++) {
-    const sentence = generator.next().value
-    t.assert(sentence.length <= maxLength)
+    const next = generator.next()
+    t.assert(next.done === false)
+    t.assert(typeof next.value === 'string')
+
+    t.assert(next.value && next.value.length <= maxLength)
   }
 })
