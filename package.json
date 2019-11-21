@@ -2,13 +2,12 @@
   "name": "mattophobia",
   "version": "1.0.1",
   "description": "Generate Mattophobia-like sentences",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
-  "directories": {
-    "lib": "lib"
-  },
+  "main": "./lib/index.js",
+  "module": "./esm/index.js",
+  "types": "./lib/index.d.ts",
   "files": [
-    "lib/**/*"
+    "lib/**/*",
+    "esm/**/*"
   ],
   "scripts": {
     "prepublishOnly": "yarn run test && yarn run build",
@@ -17,8 +16,10 @@
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "check": "yarn run build --noEmit",
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
-    "prebuild": "rimraf lib",
-    "build": "ncc build ./src/index.ts -o lib -m",
+    "prebuild": "rimraf lib esm",
+    "build:cjs": "ncc build ./src/index.ts -o lib -m",
+    "build:esm": "yarn run compile --module ES6 --outDir esm",
+    "build": "yarn run build:cjs && yarn run build:esm",
     "compile": "tsc",
     "watch": "yarn run compile --watch",
     "dev": "yarn run watch  --sourceMap"

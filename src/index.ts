@@ -113,4 +113,4 @@ function* mattophobia(opts: Partial<IOptions> = defaultOptions) {
   }
 }
 
-export = mattophobia
+export default mattophobia
