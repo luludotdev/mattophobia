@@ -15,7 +15,7 @@
     "test": "yarn run check && yarn run lint && yarn run ava",
     "ava": "nyc --reporter=html --reporter=text ava",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "check": "yarn run build --noEmit",
+    "check": "yarn run compile --noEmit",
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
     "prebuild": "rimraf lib esm",
     "build:cjs": "ncc build ./src/index.ts -o lib -m",
