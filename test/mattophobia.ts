@@ -11,7 +11,7 @@ test('returns an IterableIterator<string>', t => {
   t.assert(generator.return && typeof generator.return === 'function')
   t.assert(generator.throw && typeof generator.throw === 'function')
 
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 10000; i++) {
     const sentence = generator.next().value
     t.assert(typeof sentence === 'string')
   }
@@ -21,7 +21,7 @@ test('respects maxLength', t => {
   const maxLength = 140
   const generator = mattophobia({ maxLength })
 
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 10000; i++) {
     const next = generator.next()
     t.assert(next.done === false)
     t.assert(typeof next.value === 'string')
