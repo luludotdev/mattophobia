@@ -114,3 +114,4 @@ function* mattophobia(opts: Partial<IOptions> = defaultOptions) {
 }
 
 export default mattophobia
+export { INGS, STANDALONE, SWEARS } from './constants'
